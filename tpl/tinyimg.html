@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta charset="UTF-8">
+    <title>图片压缩 - 在线工具 - OKTools</title>
+    <meta name="keywords" content="图片压缩,图片在线压缩,JS压缩图片">
+    <meta name="description" content="在线图片压缩工具,图片在线压缩,JS压缩图片">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/static/css/style.css" type="text/css">
+    <style>
+        .textarea {
+            min-height: 18em;
+            max-height: 25em;
+            height: auto;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+{{template "aside"}}
+<main>
+    <div class="container">
+        <h1>图片压缩</h1>
+        <div class="file fullwidth gap-top">
+            <span class="file-cta">
+                <input id="input_file" class="file-input" type="file"
+                       accept="image/png, image/jpeg, image/gif, image/jpg" onchange="preview(this.files[0])">
+                <span class="file-icon">
+                    <i class="fas fa-upload"></i>
+                </span>
+                <span class="file-button">选择一张图片</span>
+            </span>
+            <span id="file_name" class="file-name"></span>
+        </div>
+        <div id="img_input" class="textarea gap-top"><img></div>
+        <p id="input_info" class="help text-info"></p>
+        <div class="flex gap-top">
+            <label class="group fullwidth">
+                <span class="static">宽</span>
+                <input id="output_width" class="input" type="number" onchange="onChangeWidth()">
+                <span class="static">高</span>
+                <input id="output_height" class="input" type="number" onchange="onChangeHeight()">
+                <span class="static">质量</span>
+                <select id="select_quality" class="select"></select>
+                <input id="output_quality" class="input" type="number" placeholder="自定义质量"
+                       onchange="onInputQuality()">
+            </label>
+            <div class="group" style="margin-left: 1em">
+                <button class="button primary" onclick="compress(this)">压缩</button>
+                <button class="button" onclick="save()">保存</button>
+            </div>
+        </div>
+        <div id="img_output" class="textarea gap-top"><img></div>
+        <p id="output_info" class="help text-info"></p>
+        <div class="tile gap-top">
+            使用JavaScript进行压缩，图片不会被上传到服务器。
+        </div>
+    </div>
+</main>
+<script src="/static/js/tinyimg.js"></script>
+</body>
+</html>

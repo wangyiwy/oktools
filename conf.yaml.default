@@ -1,0 +1,23 @@
+app:
+  mode: debug
+  log-file: oktools.log
+
+http:
+  port: 80
+  ssl:
+    enable: false
+    crt:
+    key:
+
+database:
+  host: 127.0.0.1
+  port: 5432
+  username: 
+  password: 
+  dbname: 
+
+third-party:
+  amap:
+    key: 
+  serverchan:
+    key: 

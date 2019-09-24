@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Base64编码、Base64解码 - 在线工具 - OKTools</title>
+    <meta name="keywords" content="Base64,Base64编码,Base64解码">
+    <meta name="description" content="在线Base64编码、解码工具,Base64,Base64编码,Base64解码">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link href="https://cdn.bootcss.com/font-awesome/5.10.0-11/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css" type="text/css">
+</head>
+<body>
+{{template "aside"}}
+<main>
+    <div class="container">
+        <h1>Base64编码/解码</h1>
+        <textarea id="area_input" class="textarea gap-top" rows="15" onpaste="setTimeout(encode, 1)"></textarea>
+        <div class="content-center gap-top">
+            <button class="button" onclick="encode()">
+                <i class="fa fa-arrow-down"></i>
+                <span>编码</span>
+            </button>
+            <button class="button" onclick="decode()">
+                <i class="fa fa-arrow-up"></i>
+                <span>解码</span>
+            </button>
+            <button class="button" onclick="cleanup()">清空</button>
+        </div>
+        <textarea id="area_output" class="textarea gap-top" rows="15" onpaste="setTimeout(decode, 1)"></textarea>
+    </div>
+</main>
+<script>
+    let area_input = document.getElementById('area_input');
+    let area_output = document.getElementById('area_output');
+
+    function encode() {
+        area_output.value = btoa(unescape(encodeURIComponent(area_input.value)))
+    }
+
+    function decode() {
+        area_input.value = decodeURIComponent(escape(atob(area_output.value)))
+    }
+
+    function cleanup() {
+        area_input.value = '';
+        area_output.value = '';
+    }
+</script>
+</body>
+</html>

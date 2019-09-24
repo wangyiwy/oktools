@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta charset="UTF-8">
+    <title>进制转换 二、八、十、十六进制转换 - 在线工具 - OKTools</title>
+    <meta name="keywords" content="二进制,八进制,十六进制,进制转换">
+    <meta name="description" content="在线进制转换工具,二进制,八进制,十六进制,进制转换">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/static/css/style.css" type="text/css">
+</head>
+<body>
+{{template "aside"}}
+<main>
+    <div class="container">
+        <h1>进制转换</h1>
+        <div class="group gap-top">
+            <select id="select_type" class="select" onchange="convert()">
+                <option value="2">2进制</option>
+                <option value="4">4进制</option>
+                <option value="8">8进制</option>
+                <option value="10" selected>10进制</option>
+                <option value="16">16进制</option>
+                <option value="32">32进制</option>
+            </select>
+            <input id="input_number" class="input" placeholder="1024" onpaste="setTimeout(convert, 1)">
+            <button class="button primary" onclick="convert()">计算</button>
+        </div>
+        <table class="table gap-top">
+            <thead>
+            <tr>
+                <th>2进制</th>
+                <th>4进制</th>
+                <th>8进制</th>
+                <th>10进制</th>
+                <th>16进制</th>
+                <th>32进制</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr id="result"></tr>
+            </tbody>
+        </table>
+        <div class="tile gap-top">
+            <ul>
+                <li>只支持整数之间的转换，</li>
+                <li>JavaScript中的基本数据类Number是双精度浮点数，可以转换的数字取值范围在-2^53~2^53,即十进制的-9007199254740991~9007199254740991。
+                </li>
+            </ul>
+        </div>
+    </div>
+</main>
+<script>
+    function convert(num) {
+        let type = parseInt(document.getElementById('select_type').value);
+        let decimal = num | parseInt(document.getElementById('input_number').value, type);
+        document.getElementById('result').innerHTML = `<td>${decimal.toString(2)}</td><td>${decimal.toString(4)}</td><td>${decimal.toString(8)}</td><td>${decimal.toString(10)}</td><td>${decimal.toString(16)}</td><td>${decimal.toString(32)}</td>`;
+    }
+
+    document.getElementById('input_number').addEventListener('keydown', function (event) {
+        if (event.keyCode === 13) {
+            convert()
+        }
+    });
+    convert(1024);
+</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+{{define  "aside"}}
+    <aside>
+        <h1 class="logo"><a href="/">OKTools</a></h1>
+        <nav class="side-nav">
+            <p>JSON</p>
+            <ul>
+                <li><a href="/json">JSON格式化</a></li>
+                <li><a href="/json2xml">JSON/XML转换</a></li>
+                <li><a href="/json2yaml">JSON/YAML转换</a></li>
+                <li><a href="/json2go">JSON转Go Struct</a></li>
+            </ul>
+            <p>Base64</p>
+            <ul>
+                <li><a href="/base64">Base64编码解码</a></li>
+                <li><a href="/image2base64">图片Base64编码</a></li>
+            </ul>
+            <p>转换</p>
+            <ul>
+                <li><a href="/timestamp">Unix时间戳</a></li>
+                <li><a href="/morse">摩斯电码</a></li>
+                <li><a href="/color">颜色值转换</a></li>
+                <li><a href="/number">进制转换</a></li>
+                <li><a href="/url">URL编码解码</a>
+                <li><a href="/unicode">Unicode编码转换</a></li>
+                <li><a href="/pdf2img">PDF转图片</a></li>
+            </ul>
+            <p>Hash</p>
+            <ul>
+                <li><a href="/hash">Hash计算</a></li>
+                <li><a href="/file-hash">文件Hash计算</a></li>
+            </ul>
+            <p>加密</p>
+            <ul>
+                <li><a href="/aes">AES加密解密</a></li>
+                <li><a href="/des">DES加密解密</a></li>
+                <li><a href="/rsa">RSA加密解密</a></li>
+            </ul>
+            <p>其他</p>
+            <ul>
+                <li><a href="/ip">IP地址信息</a></li>
+                <li><a href="/tinyimg">图片压缩</a></li>
+                <li><a href="/qrcode">二维码制作</a></li>
+                <li><a href="http://oktools.net/websocket">WebSocket测试</a></li>
+                <li><a href="/regex">正则表达式测试</a></li>
+                <li><a href="/placeholder">SVG占位图</a></li>
+                <li><a href="/clocks">CSS时钟</a></li>
+            </ul>
+        </nav>
+    </aside>
+    <script>
+        var _hmt = _hmt || [];
+        let hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?e3d5bc397b23c3f6a8036739dae1557b";
+        let s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+
+        let tools = document.querySelectorAll('.side-nav li');
+        for (let i = 0; i < tools.length; i++) {
+            let node = tools[i];
+            if (node.querySelector('a').getAttribute('href').endsWith(document.location.pathname)) {
+                node.classList.add('active');
+                break
+            }
+        }
+    </script>
+{{end}}

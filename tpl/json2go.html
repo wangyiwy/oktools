@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON转Golang Struct - 在线工具 - OKTools</title>
+    <meta name="keywords" content="JSON转Golang Struct">
+    <meta name="description" content="在线JSON转Golang Struct工具,JSON转Golang 结构体,JSON转Struct,JSON转Go">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/static/css/style.css" type="text/css">
+    <link href="https://cdn.bootcss.com/highlight.js/9.15.9/styles/idea.min.css" rel="stylesheet">
+    <style>
+        .container {
+            max-width: 100%;
+        }
+
+        pre {
+            overflow: auto
+        }
+    </style>
+</head>
+<body>
+{{template "aside"}}
+<main>
+    <div class="container">
+        <h1>JSON转Golang Struct</h1>
+        <div class="flex gap-top-small">
+            <div class="editarea" onpaste="setTimeout(convert, 1)">
+                <label>JSON</label>
+                <pre id="input" class="textarea fullHeight fixed-size" contenteditable="true"></pre>
+            </div>
+            <div class="mid-menus">
+                <div>
+                    <button class="button primary" onclick="convert()">转换-展开</button>
+                    <button class="button primary" onclick="convert(false)">转换-嵌套</button>
+                    <button class="button" data-clipboard-action="copy" data-clipboard-target="#output">复制</button>
+                    <button class="button" onclick="cleanup()">清空</button>
+                </div>
+            </div>
+            <div class="editarea">
+                <label>GO</label>
+                <pre class="textarea fullHeight fixed-size"><code id="output"></code></pre>
+            </div>
+        </div>
+    </div>
+</main>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.9/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.9/languages/json.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.9/languages/go.min.js"></script>
+<script src="https://cdn.bootcss.com/clipboard.js/2.0.4/clipboard.min.js"></script>
+<script src="/static/js/json2go.js"></script>
+</body>
+</html>

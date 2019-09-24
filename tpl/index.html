@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>在线工具 - OKTools</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="keywords" content="在线工具,工具,开发工具,二维码,JSON格式化,Unix时间戳,Base64,MD5,加密解密">
+    <meta name="description" content="OKTools是一个在线工具网站。提供二维码制作、JSON格式化、Unix时间戳转换、Base64编码、加密解密、图片压缩、IP查询、Hash计算等常用工具。">
+    <link rel="stylesheet" href="/static/css/style.css" type="text/css">
+</head>
+<body style="display:block;background:var(--color-accent)">
+<header>
+    <div class="container">
+        <a class="logo" href="/"><strong>OKTools</strong></a>
+        <nav>
+            <a class="nav-item" onclick="addFavorite()">加入收藏</a>
+            <a class="nav-item" target="_blank" href="https://support.qq.com/products/66960">留言反馈</a>
+            <a class="nav-item" href="https://github.com/wangyiwy/oktools">项目源码</a>
+        </nav>
+    </div>
+</header>
+<div class="container tools">
+    {{range .tools}}<a class="tool" href="{{.Path}}"><p>{{.Title}}</p>
+        <p>https://oktools.net{{.Path}}</p></a>{{end}}
+</div>
+<footer>
+    <p>Copyright © 2019 &nbsp;·&nbsp; 渝ICP备19010085号-1</p>
+</footer>
+<script>
+    function addFavorite() {
+        try {
+            window.sidebar.addPanel(location.href, document.title, "");
+        } catch (e) {
+            try {
+                window.external.addFavorite(document.title, location.href)
+            } catch (e) {
+                alert("请使用快捷键Ctrl+D添加到收藏");
+            }
+        }
+    }
+
+    var _hmt = _hmt || [];
+    let hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?e3d5bc397b23c3f6a8036739dae1557b";
+    let s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+</script>
+</body>
+</html>

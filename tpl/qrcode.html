@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta charset="UTF-8">
+    <title>二维码制作 - 在线工具 - OKTools</title>
+    <meta name="keywords" content="二维码,二维码制作,二维码生成,二维码图片">
+    <meta name="description" content="在线二维码制作工具,二维码制作,二维码生成,二维码图片">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/static/css/style.css" type="text/css">
+    <style>
+        .select {
+            flex-shrink: 1;
+            width: 100%;
+        }
+
+        .options {
+            width: 200px;
+            margin: 0 24px;
+        }
+
+        #input_size {
+            max-width: 111px;
+        }
+
+        .image {
+            width: 280px;
+            height: 280px;
+            background-color: #f3f3f3;
+            clear: both;
+            display: block;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+{{template "aside"}}
+<main>
+    <div class="container">
+        <h1>二维码制作</h1>
+        <div class="flex gap-top" style="justify-content: flex-end;">
+            <div style="flex-grow: 1">
+                <div class="control">
+                    <textarea id="area_text" class="textarea fixed-size" rows="10" maxlength="200"
+                              onfocusin="onInputText(this)" placeholder="二维码内容"
+                              onpaste="setTimeout(generate, 1)"></textarea>
+                    <p id="text_help" class="help text-info">字数越多，越不易扫描</p>
+                </div>
+            </div>
+            <div class="options">
+                <div class="group fullwidth">
+                    <span class="static">尺寸(px)</span>
+                    <input id="input_size" class="input" type="number" value="280"
+                           oninput="if(value>1000)value=1000">
+                </div>
+                <div class="group fullwidth gap-top">
+                    <span class="static">纠错等级</span>
+                    <select id="select_level" class="select">
+                        <option value="2">H : 高</option>
+                        <option value="3" selected>Q : 中等</option>
+                        <option value="0">M : 低</option>
+                        <option value="1">L : 最低</option>
+                    </select>
+                </div>
+                <div class="group fullwidth gap-top">
+                    <span class="static">背景颜色</span>
+                    <input id="input_bg" class="input" type="color" value="#ffffff">
+                </div>
+                <div class="group fullwidth gap-top">
+                    <span class="static">前景颜色</span>
+                    <input id="input_fg" class="input" type="color" value="#000000">
+                </div>
+                <button class="button primary fullwidth gap-top" onclick="generate()">生成二维码</button>
+            </div>
+            <div>
+                <figure id="img_qrcode" class="image"></figure>
+                <button class="button fullwidth gap-top" onclick="save()">保存图片</button>
+            </div>
+        </div>
+        <div class="content gap-top">
+            <h2>二维码原理</h2>
+            <p>二维条码/二维码可以分为堆叠式/行排式二维条码和矩阵式二维条码。
+                堆叠式/行排式二维条码形态上是由多行短截的一维5条码堆叠而成；
+                矩阵式二维条码以矩阵的形式组成，在矩阵相应元素位置上用“点”表示二进制“1”，
+                用“空”表示二进制“0”，“点”和“空”的排列组成代码。</p>
+            <h2>数据表示方法</h2>
+            <p>深色模块表示二进制“1”，浅色模块表示二进制“0”。</p>
+            <h2>纠错能力</h2>
+            <ul>
+                <li>level L : 约可纠错7%的数据码字</li>
+                <li>level M : 约可纠错15%的数据码字</li>
+                <li>level Q : 约可纠错25%的数据码字</li>
+                <li>level H : 约可纠错30%的数据码字</li>
+            </ul>
+        </div>
+    </div>
+</main>
+<script src="../static/js/qrcode.min.js"></script>
+<script>
+    let img_qrcode = document.getElementById('img_qrcode');
+
+    function generate() {
+        img_qrcode.innerHTML = '';
+        img_qrcode.style.visibility = 'hidden';
+
+        let area_text = document.getElementById('area_text');
+        if (!area_text.value) {
+            area_text.classList.add('error');
+            return
+        }
+
+        let size = parseInt(document.getElementById('input_size').value);
+        if (size <= 0 || size > 1000) {
+            return;
+        }
+
+        try {
+            new QRCode(img_qrcode, {
+                text: area_text.value,
+                width: size,
+                height: size,
+                colorDark: document.getElementById('input_fg').value,
+                colorLight: document.getElementById('input_bg').value,
+                correctLevel: parseInt(document.getElementById('select_level').value)
+            });
+            setTimeout(() => img_qrcode.style.visibility = 'visible');
+        } catch (e) {
+            document.getElementById('area_text').classList.add('error');
+            let text_help = document.getElementById('text_help');
+            text_help.classList.add('text-error');
+            text_help.innerText = '内容过多'
+        }
+    }
+
+    function onInputText(e) {
+        e.classList.remove('error');
+        let text_help = document.getElementById('text_help');
+        text_help.classList.remove('text-error');
+        text_help.innerText = '字数越多，越不易扫描';
+    }
+
+    function save() {
+        let img = img_qrcode.getElementsByTagName('img')[0];
+        let url = img.src;
+        let a = document.createElement('a');
+        let event = new MouseEvent('click');
+        a.download = 'qrcode_' + Math.round(new Date() / 1000);
+        a.href = url;
+        a.dispatchEvent(event)
+    }
+</script>
+</body>
+</html>

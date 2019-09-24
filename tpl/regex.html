@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta charset="UTF-8">
+    <title>正则表达式 - 在线工具 - OKTools</title>
+    <meta name="keywords" content="正则表达式,正则匹配,正则测试,常用正则表达式">
+    <meta name="description" content="在线正则测试工具,正则匹配,正则测试,常用正则表达式">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/static/css/style.css" type="text/css">
+</head>
+<body>
+{{template "aside"}}
+<main>
+    <div class="container">
+        <h1>正则表达式</h1>
+        <textarea id="area_text" class="textarea gap-top" rows="5"></textarea>
+        <div class="flex gap-top">
+            <label class="group fullwidth">
+                <span class="static">正则表达式</span>
+                <input id="input_pattern" class="input">
+            </label>
+            <label class="checkbox"><input id="cb_global_search" type="checkbox" checked><span>全局搜索</span></label>
+            <label class="checkbox"><input id="cb_ignore_case" type="checkbox"><span>忽略大小写</span></label>
+            <button class="button primary" style="margin-left: 1em" onclick="match()">测试匹配</button>
+        </div>
+        <textarea id="area_matched" class="textarea gap-top" rows="5" disabled></textarea>
+        <div class="group fullwidth gap-top">
+            <span class="static">替换文本</span>
+            <input id="input_replace" class="input">
+            <button class="button primary" onclick="replace()">替换</button>
+        </div>
+        <textarea id="area_replacement" class="textarea gap-top" rows="5" disabled></textarea>
+        <h2 class="gap-top">常用正则表达式</h2>
+        <div id="tables"></div>
+    </div>
+</main>
+<script src="/static/js/regex.js"></script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta charset="UTF-8">
+    <title>图片转Base64编码 - 在线工具 - OKTools</title>
+    <meta name="keywords" content="Base64,图片Base64编码,Base64转图片">
+    <meta name="description" content="在线图片Base64编码工具,图片Base64编码,Base64转图片">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link href="https://cdn.bootcss.com/font-awesome/5.10.0-11/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css" type="text/css">
+</head>
+<body>
+{{template "aside"}}
+<main>
+    <div class="container">
+        <h1>图片Base64编码</h1>
+        <div class="file fullwidth gap-top">
+            <span class="file-cta">
+                <input id="input_file" class="file-input" type="file"
+                       accept="image/png, image/jpeg, image/gif, image/jpg" onchange="onChange(this)">
+                <span class="file-icon">
+                    <i class="fas fa-upload"></i>
+                </span>
+                <span class="file-button">选择一张图片</span>
+            </span>
+            <span id="file_name" class="file-name"></span>
+        </div>
+        <div id="img_input" class="textarea gap-top" contenteditable="true" style="min-height: 18em;height: auto;
+            overflow: auto;"></div>
+        <div class="content-center gap-top">
+            <button class="button" onclick="base64ToImage()">
+                <i class="fa fa-arrow-up"></i>
+                <span>Base64还原图片</span>
+            </button>
+            <button class="button" onclick="cleanup()">
+                <span>清空</span>
+            </button>
+        </div>
+        <textarea id="area_base64" class="textarea gap-top" rows="20" onpaste="setTimeout(base64ToImage, 1)"></textarea>
+    </div>
+</main>
+<script>
+    function formatSize(size, len, units) {
+        let unit;
+        units = units || ['B', 'K', 'M', 'G', 'TB'];
+        while ((unit = units.shift()) && size > 1024) {
+            size = size / 1024;
+        }
+        return (unit === 'B' ? size : size.toFixed(len === undefined ? 2 : len)) + unit;
+    }
+
+    let img_input = document.getElementById('img_input');
+    let file_name = document.getElementById('file_name');
+    let area_base64 = document.getElementById('area_base64');
+
+    function base64ToImage() {
+        let base64 = area_base64.value;
+        if (!base64.startsWith('data:image')) {
+            base64 = 'data:image/jpeg;base64,' + base64
+        }
+        img_input.innerHTML = `<img src="${base64}">`;
+    }
+
+    function cleanup() {
+        img_input.innerText = '';
+        file_name.innerText = '';
+        area_base64.value = '';
+    }
+
+    function onChange(e) {
+        loadImage(e.files[0]);
+        e.value = null;
+    }
+
+    function loadImage(file) {
+        let reader = new FileReader();
+        reader.onload = function (e) {
+            file_name.innerHTML = file.name + `&nbsp;&nbsp;<a>[${formatSize(file.size)}]</a>`;
+            img_input.innerHTML = `<img src="${e.target.result}">`;
+            area_base64.value = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+
+    document.addEventListener('paste', function (event) {
+        if (event.clipboardData || event.originalEvent) {
+            let data = (event.clipboardData || event.originalEvent.clipboardData);
+            if (data.items) {
+                let items = data.items, len = items.length, blob = null;
+                for (let i = 0; i < len; i++) {
+                    if (items[i].type.indexOf("image") !== -1) {
+                        blob = items[i].getAsFile();
+                        loadImage(blob);
+                    }
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>

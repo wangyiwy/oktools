@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta charset="UTF-8">
+    <title>IP地址查询 - 在线工具 - OKTools</title>
+    <meta name="keywords" content="IP地址,IP查询,IP地理信息查询">
+    <meta name="description" content="在线IP地址查询工具,IP查询,IP地理信息查询">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/static/css/style.css" type="text/css">
+</head>
+<body>
+{{template "aside"}}
+<main>
+    <div class="container">
+        <h1>IP地址查询</h1>
+        <div class="group fullwidth gap-top">
+            <span class="static">IP或域名</span>
+            <input id="input_ip" class="input" value="{{.IP}}" maxlength="128">
+            <button class="button primary" onclick="getIpInfo(this)">查询</button>
+        </div>
+        <div id="table_list"></div>
+    </div>
+</main>
+<script>
+    function getIpInfo(btn) {
+        document.getElementById('table_list').innerHTML = '';
+        if (btn) btn.innerText = '查询中...';
+
+        let param = document.getElementById('input_ip').value;
+        if (!param) {
+            return
+        }
+
+        fetch('/api/ip/' + param)
+            .then(res => res.json())
+            .then(function (res) {
+                let table_list = '';
+                for (let k1 in res) {
+                    table_list += '<table class="table striped fullwidth gap-top"><tbody>';
+                    let item = res[k1];
+                    let data = item.data || item;
+                    for (let k2 in data) {
+                        let value = data[k2];
+                        if (value !== null) {
+                            table_list += `<tr><th>${k2}</th><td>${value}</td></tr>`
+                        }
+                    }
+                    table_list += '</tbody></table>';
+                }
+                document.getElementById('table_list').innerHTML = table_list;
+            }).catch(e => alert(e))
+            .finally(function () {
+                if (btn) btn.innerText = '查询'
+            });
+    }
+
+    getIpInfo();
+
+    document.getElementById('input_ip').addEventListener('keydown', function (event) {
+        if (event.keyCode === 13) {
+            getIpInfo()
+        }
+    });
+</script>
+</body>
+</html>
