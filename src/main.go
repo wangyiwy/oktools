@@ -1,10 +1,12 @@
 package main
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
 	_ "net/http/pprof"
+	"net/url"
 	"oktools/src/conf"
 	"oktools/src/contoller"
 	"oktools/src/middleware"
@@ -61,8 +63,8 @@ func main() {
 
 	if err != nil {
 		if gin.Mode() == gin.ReleaseMode {
-			_, _ = http.Get("https://sc.ftqq.com/" + conf.Conf.ThirdParty.ServerChan.Key + ".send" +
-				"?text=主人服务器又挂掉啦~&desp=" + err.Error())
+			_, _ = http.Get(fmt.Sprintf("https://sc.ftqq.com/%s.send?text=%s",
+				conf.Conf.ThirdParty.ServerChan.Key, url.QueryEscape("主人服务器又挂掉啦~")))
 		}
 		panic(err)
 	}
