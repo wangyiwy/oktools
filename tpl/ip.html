@@ -13,7 +13,7 @@
 <main>
     <div class="container">
         <h1>IP地址查询</h1>
-        <div class="group fullwidth gap-top">
+        <div class="group fullwidth mt-2">
             <span class="static">IP或域名</span>
             <input id="input_ip" class="input" value="{{.IP}}" maxlength="128">
             <button class="button primary" onclick="getIpInfo(this)">查询</button>
@@ -36,7 +36,7 @@
             .then(function (res) {
                 let table_list = '';
                 for (let k1 in res) {
-                    table_list += '<table class="table striped fullwidth gap-top"><tbody>';
+                    table_list += '<table class="table striped fullwidth mt-2"><tbody>';
                     let item = res[k1];
                     let data = item.data || item;
                     for (let k2 in data) {

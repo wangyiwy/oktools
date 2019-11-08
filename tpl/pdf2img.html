@@ -14,7 +14,7 @@
 <main>
     <div class="container">
         <h1>PDF转图片</h1>
-        <div class="file fullwidth gap-top">
+        <div class="file fullwidth mt-2">
             <span class="file-cta">
                 <input id="input_file" class="file-input" type="file" accept="application/pdf"
                        onchange="loadPDF(this.files[0])">
@@ -25,7 +25,7 @@
             </span>
             <span id="file_name" class="file-name"></span>
         </div>
-        <div class="content-center gap-top">
+        <div class="content-center mt-2">
             <div class="group">
                 <button class="button" onclick="prevPage()">
                     <i class="fa fa-arrow-left"></i>
@@ -52,7 +52,7 @@
             </button>
         </div>
         <p id="page_num"></p>
-        <div class="content-center gap-top">
+        <div class="content-center mt-2">
             <canvas id="preview" class="bordered" hidden></canvas>
         </div>
     </div>

@@ -13,8 +13,8 @@
 <main>
     <div class="container">
         <h1>Hash计算</h1>
-        <textarea id="area_text" class="textarea gap-top" rows="15" placeholder="字符串"></textarea>
-        <div class="group fullwidth gap-top">
+        <textarea id="area_text" class="textarea mt-2" rows="15" placeholder="字符串"></textarea>
+        <div class="group fullwidth mt-2">
             <select id="select_algo" class="select" onchange="calHash()">
                 <option value="MD5">MD5</option>
                 <option value="SHA1">SHA1</option>
@@ -32,7 +32,7 @@
             <input id="input_key" class="input" placeholder="密钥,非必填">
             <button class="button primary" onclick="calHash()">计算</button>
         </div>
-        <input id="input_hash" class="input gap-top" rows="1" placeholder="Hash值"/>
+        <input id="input_hash" class="input mt-2" rows="1" placeholder="Hash值"/>
     </div>
 </main>
 <script src="https://cdn.bootcss.com/crypto-js/3.1.9-1/crypto-js.min.js"></script>

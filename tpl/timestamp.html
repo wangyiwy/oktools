@@ -13,7 +13,7 @@
 <main>
     <div class="container">
         <h1>Unix时间戳</h1>
-        <div class="flex gap-top">
+        <div class="flex mt-2">
             <div class="group" style="margin-right:1em;flex-shrink: 2">
                 <span class="static">当前时间</span>
                 <input id="time_now" class="input text-info">
@@ -28,7 +28,7 @@
                 <button class="button" onclick="updateTime()">刷新</button>
             </div>
         </div>
-        <div class="group gap-top">
+        <div class="group mt-2">
             <span class="static">Unix时间戳</span>
             <input id="input_time" class="input inline" type="text" onpaste="setTimeout(timeToDate, 1)">
             <select id="select_input_unit" class="select" onchange="timeToDate()">
@@ -39,7 +39,7 @@
             <input id="output_date" class="input inline" type="text">
         </div>
         <br>
-        <div class="group gap-top">
+        <div class="group mt-2">
             <span class="static">北京时间</span>
             <input id="input_date" class="input inline" type="text" onpaste="setTimeout(dateToTime, 1)">
             <button class="button primary" onclick="dateToTime()">转换</button>
@@ -49,8 +49,8 @@
                 <option value="ms">毫秒</option>
             </select>
         </div>
-        <h3 class="gap-top">在编程语言中获取Unix时间戳：</h3>
-        <table class="table striped fullwidth gap-top">
+        <h3 class="mt-2">在编程语言中获取Unix时间戳：</h3>
+        <table class="table striped fullwidth mt-2">
             <thead>
             <tr>
                 <th>语言</th>

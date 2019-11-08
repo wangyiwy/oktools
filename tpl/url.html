@@ -14,8 +14,8 @@
 <main>
     <div class="container">
         <h1>URL编码/解码</h1>
-        <textarea id="area_url" class="textarea gap-top" rows="6" onpaste="setTimeout(encode, 1)"></textarea>
-        <div class="content-center gap-top">
+        <textarea id="area_url" class="textarea mt-2" rows="6" onpaste="setTimeout(encode, 1)"></textarea>
+        <div class="content-center mt-2">
             <button class="button" onclick="encode()">
                 <i class="fa fa-arrow-down"></i>
                 <span>编码</span>
@@ -26,12 +26,12 @@
             </button>
             <button class="button" onclick="cleanup()">清空</button>
         </div>
-        <h2 class="gap-top">encodeURI:</h2>
-        <textarea id="area_encoded" class="textarea gap-top-small" rows="6" onpaste="setTimeout(decode, 1)"></textarea>
-        <h2 class="gap-top">encodeURIComponent:</h2>
-        <textarea id="area_encoded_component" class="textarea gap-top-small" rows="6"
+        <h2 class="mt-2">encodeURI:</h2>
+        <textarea id="area_encoded" class="textarea mt1" rows="6" onpaste="setTimeout(decode, 1)"></textarea>
+        <h2 class="mt-2">encodeURIComponent:</h2>
+        <textarea id="area_encoded_component" class="textarea mt1" rows="6"
                   onpaste="setTimeout(decode, 1)"></textarea>
-        <div class="tile gap-top">
+        <div class="tile mt-2">
             <ul>
                 <li>encodeURI()是Javascript中用来对URL编码的函数。它着眼于对整个URL进行编码，因此除了常见的符号以外，对其他一些在网址中有特殊含义的符号<strong>"; / ? : @ &
                         = + $ , #"</strong>，也不进行编码。编码后，它输出符号的utf-8形式，并且在每个字节前加上%。

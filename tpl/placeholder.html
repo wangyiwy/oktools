@@ -13,52 +13,52 @@
 <main>
     <div class="container">
         <h1>SVG占位图</h1>
-        <div class="gap-top" style="max-height:500px;overflow: auto;">
+        <div class="mt-2" style="max-height:500px;overflow: auto;">
             <a id="preview" target="_blank">
                 <figure><img id="img_preview" style="width: 100%"></figure>
             </a>
         </div>
-        <div class="gap-top-small">
+        <div class="mt1">
             <label class="group">
                 <span class="static">图片宽度</span>
                 <input id="input_width" class="input inline" type="number" value="800"
                        placeholder="1-1000" oninput="if(value>1000)value=1000">
             </label>
         </div>
-        <div class="gap-top-small">
+        <div class="mt1">
             <label class="group">
                 <span class="static">图片高度</span>
                 <input id="input_height" class="input inline" type="number" value="200"
                        placeholder="1-1000" oninput="if(value>1000)value=1000">
             </label>
         </div>
-        <div class="gap-top-small">
+        <div class="mt1">
             <label class="group">
                 <span class="static">文字内容</span>
                 <input id="input_text" class="input inline" type="text" placeholder="800x200" maxlength="50">
             </label>
         </div>
-        <div class="gap-top-small">
+        <div class="mt1">
             <label class="group">
                 <span class="static">背景颜色</span>
                 <input id="input_bg_color" class="input inline" type="text" placeholder="CCCCCC">
             </label>
         </div>
-        <div class="gap-top-small">
+        <div class="mt1">
             <label class="group">
                 <span class="static">前景颜色</span>
                 <input id="input_fg_color" class="input inline" type="text" placeholder="FFFFFF">
             </label>
         </div>
-        <div class="flex gap-top">
+        <div class="flex mt-2">
             <div class="group" style="flex-shrink: 6">
                 <button class="button primary" onclick="generate()">生成</button>
                 <button class="button" onclick="copyUrl()">复制</button>
             </div>
             <input class="input" id="input_url" style="margin-left: 2em">
         </div>
-        <h2 class="gap-top">使用方式</h2>
-        <div class="tile gap-top">
+        <h2 class="mt-2">使用方式</h2>
+        <div class="tile mt-2">
             <ul id="tips">
                 <li>https://oktools.net/ph/[width]x[height]</li>
                 <li>https://oktools.net/ph/[width]x[height]?t=[文字]&bg=[背景颜色]&fg=[文字颜色]</li>

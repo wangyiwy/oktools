@@ -21,7 +21,7 @@
 <main>
     <div class="container">
         <h1>WebSocket测试</h1>
-        <div class="flex gap-top">
+        <div class="flex mt-2">
             <label class="group fullwidth">
                 <span class="static">地址</span>
                 <input id="input_server" class="input">
@@ -32,8 +32,8 @@
                 <button class="button" onclick="cleanup(this)">清空</button>
             </div>
         </div>
-        <div id="msg_list" class="tile bordered gap-top"></div>
-        <div class="group fullwidth gap-top">
+        <div id="msg_list" class="tile bordered mt-2"></div>
+        <div class="group fullwidth mt-2">
             <span class="static">消息</span>
             <input id="input_msg" class="input">
             <button class="button primary" onclick="send()">发送</button>

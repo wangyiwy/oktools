@@ -37,7 +37,7 @@
 <main>
     <div class="container">
         <h1>二维码制作</h1>
-        <div class="flex gap-top" style="justify-content: flex-end;">
+        <div class="flex mt-2" style="justify-content: flex-end;">
             <div style="flex-grow: 1">
                 <div class="control">
                     <textarea id="area_text" class="textarea fixed-size" rows="10" maxlength="200"
@@ -52,7 +52,7 @@
                     <input id="input_size" class="input" type="number" value="280"
                            oninput="if(value>1000)value=1000">
                 </div>
-                <div class="group fullwidth gap-top">
+                <div class="group fullwidth mt-2">
                     <span class="static">纠错等级</span>
                     <select id="select_level" class="select">
                         <option value="2">H : 高</option>
@@ -61,22 +61,22 @@
                         <option value="1">L : 最低</option>
                     </select>
                 </div>
-                <div class="group fullwidth gap-top">
+                <div class="group fullwidth mt-2">
                     <span class="static">背景颜色</span>
                     <input id="input_bg" class="input" type="color" value="#ffffff">
                 </div>
-                <div class="group fullwidth gap-top">
+                <div class="group fullwidth mt-2">
                     <span class="static">前景颜色</span>
                     <input id="input_fg" class="input" type="color" value="#000000">
                 </div>
-                <button class="button primary fullwidth gap-top" onclick="generate()">生成二维码</button>
+                <button class="button primary fullwidth mt-2" onclick="generate()">生成二维码</button>
             </div>
             <div>
                 <figure id="img_qrcode" class="image"></figure>
-                <button class="button fullwidth gap-top" onclick="save()">保存图片</button>
+                <button class="button fullwidth mt-2" onclick="save()">保存图片</button>
             </div>
         </div>
-        <div class="content gap-top">
+        <div class="content mt-2">
             <h2>二维码原理</h2>
             <p>二维条码/二维码可以分为堆叠式/行排式二维条码和矩阵式二维条码。
                 堆叠式/行排式二维条码形态上是由多行短截的一维5条码堆叠而成；

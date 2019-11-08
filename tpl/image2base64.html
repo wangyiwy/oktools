@@ -14,7 +14,7 @@
 <main>
     <div class="container">
         <h1>图片Base64编码</h1>
-        <div class="file fullwidth gap-top">
+        <div class="file fullwidth mt-2">
             <span class="file-cta">
                 <input id="input_file" class="file-input" type="file"
                        accept="image/png, image/jpeg, image/gif, image/jpg" onchange="onChange(this)">
@@ -25,9 +25,9 @@
             </span>
             <span id="file_name" class="file-name"></span>
         </div>
-        <div id="img_input" class="textarea gap-top" contenteditable="true" style="min-height: 18em;height: auto;
+        <div id="img_input" class="textarea mt-2" contenteditable="true" style="min-height: 18em;height: auto;
             overflow: auto;"></div>
-        <div class="content-center gap-top">
+        <div class="content-center mt-2">
             <button class="button" onclick="base64ToImage()">
                 <i class="fa fa-arrow-up"></i>
                 <span>Base64还原图片</span>
@@ -36,7 +36,7 @@
                 <span>清空</span>
             </button>
         </div>
-        <textarea id="area_base64" class="textarea gap-top" rows="20" onpaste="setTimeout(base64ToImage, 1)"></textarea>
+        <textarea id="area_base64" class="textarea mt-2" rows="20" onpaste="setTimeout(base64ToImage, 1)"></textarea>
     </div>
 </main>
 <script>

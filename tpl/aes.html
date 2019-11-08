@@ -14,8 +14,8 @@
 <main>
     <div class="container">
         <h1>AES加密/解密</h1>
-        <textarea id="area_text" class="textarea gap-top" rows="15" placeholder="明文"></textarea>
-        <div class="group fullwidth gap-top">
+        <textarea id="area_text" class="textarea mt-2" rows="15" placeholder="明文"></textarea>
+        <div class="group fullwidth mt-2">
             <span class="static">模式</span>
             <select id="select_mode" class="select" onchange="encrypt()">
                 <option value="CBC">CBC</option>
@@ -41,7 +41,7 @@
                 <option value="HEX">HEX</option>
             </select>
         </div>
-        <div class="group fullwidth gap-top-small">
+        <div class="group fullwidth mt1">
             <span class="static">密钥</span>
             <input id="input_key" class="input">
             <button class="button" onclick="encrypt()">
@@ -56,7 +56,7 @@
                 <span>清空</span>
             </button>
         </div>
-        <textarea id="area_cipher_text" class="textarea gap-top" rows="15" placeholder="密文"></textarea>
+        <textarea id="area_cipher_text" class="textarea mt-2" rows="15" placeholder="密文"></textarea>
     </div>
 </main>
 <script src="https://cdn.bootcss.com/crypto-js/3.1.9-1/crypto-js.min.js"></script>

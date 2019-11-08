@@ -186,7 +186,7 @@ let html = '';
 for (let i = 0; i < colors.length; i++) {
     let category = colors[i];
     for (let key in category) {
-        html += `<h3 class="gap-top">${key}</h3><table class="table fullwidth divide gap-top-small"><thead><tr><th>颜色名</th><th>预览</th><th>HEX</th><th>RGB</th><th>HSL</th></tr></thead><tbody>`;
+        html += `<h3 class="mt-2">${key}</h3><table class="table fullwidth divide mt1"><thead><tr><th>颜色名</th><th>预览</th><th>HEX</th><th>RGB</th><th>HSL</th></tr></thead><tbody>`;
         let children = category[key];
         for (let j = 0; j < children.length; j++) {
             let obj = children[j];

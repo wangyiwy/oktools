@@ -14,7 +14,7 @@
 <main>
     <div class="container">
         <h1>文件Hash计算</h1>
-        <div id="drop_zone" class="file-zone gap-top">
+        <div id="drop_zone" class="file-zone mt-2">
             <span class="file-cta">
             <input id="input_file" class="file-input" type="file" multiple>
                 <span class="file-icon">
@@ -23,7 +23,7 @@
                 <span>拖拽文件到这里或者点击选择文件</span>
             </span>
         </div>
-        <div class="flex gap-top">
+        <div class="flex mt-2">
             <label class="checkbox"><input id="cb_md5" type="checkbox" checked><span>MD5</span></label>
             <label class="checkbox"><input id="cb_sha1" type="checkbox" checked><span>SHA1</span></label>
             <label class="checkbox"><input id="cb_sha224" type="checkbox"><span>SHA224</span></label>
@@ -31,7 +31,7 @@
             <label class="checkbox"><input id="cb_sha384" type="checkbox"><span>SHA384</span></label>
             <label class="checkbox"><input id="cb_sha512" type="checkbox"><span>SHA512</span></label>
         </div>
-        <div class="tile gap-top">
+        <div class="tile mt-2">
             <ul id="tips">
                 <li>可同时选择多个文件计算，</li>
                 <li>使用<a target="_blank" href="https://github.com/brix/crypto-js"
@@ -40,7 +40,7 @@
                 </li>
             </ul>
         </div>
-        <table class="table striped fullwidth gap-top">
+        <table class="table striped fullwidth mt-2">
             <tbody id="tbody_hash"></tbody>
         </table>
     </div>

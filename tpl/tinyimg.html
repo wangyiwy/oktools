@@ -21,7 +21,7 @@
 <main>
     <div class="container">
         <h1>图片压缩</h1>
-        <div class="file fullwidth gap-top">
+        <div class="file fullwidth mt-2">
             <span class="file-cta">
                 <input id="input_file" class="file-input" type="file"
                        accept="image/png, image/jpeg, image/gif, image/jpg" onchange="preview(this.files[0])">
@@ -32,9 +32,9 @@
             </span>
             <span id="file_name" class="file-name"></span>
         </div>
-        <div id="img_input" class="textarea gap-top"><img></div>
+        <div id="img_input" class="textarea mt-2"><img></div>
         <p id="input_info" class="help text-info"></p>
-        <div class="flex gap-top">
+        <div class="flex mt-2">
             <label class="group fullwidth">
                 <span class="static">宽</span>
                 <input id="output_width" class="input" type="number" onchange="onChangeWidth()">
@@ -50,9 +50,9 @@
                 <button class="button" onclick="save()">保存</button>
             </div>
         </div>
-        <div id="img_output" class="textarea gap-top"><img></div>
+        <div id="img_output" class="textarea mt-2"><img></div>
         <p id="output_info" class="help text-info"></p>
-        <div class="tile gap-top">
+        <div class="tile mt-2">
             使用JavaScript进行压缩，图片不会被上传到服务器。
         </div>
     </div>

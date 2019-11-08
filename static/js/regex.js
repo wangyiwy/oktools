@@ -50,7 +50,7 @@ const patterns = [
 let tables = '';
 for (let key in patterns) {
     let item = patterns[key];
-    tables += `<h3 class="title is-4 gap-top">${item.category}</h3><table class="table fullwidth striped gap-top-small"><tbody>`;
+    tables += `<h3 class="title is-4 mt-2">${item.category}</h3><table class="table fullwidth striped mt1"><tbody>`;
     for (let name in item.list) {
         tables += `<tr><td>${name}</td><td><strong>${item.list[name]}</strong></td></tr>`;
     }
