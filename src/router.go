@@ -21,6 +21,7 @@ func initRouter() *gin.Engine {
 
 	r.GET("/", contoller.Index)
 	r.GET("/ping", contoller.Ping)
+	r.GET("/uptime", contoller.Uptime)
 	r.GET("/ph/:size", service.PlaceHolder)
 
 	r.GET("/base64", contoller.Base64, middleware.UsageCount)

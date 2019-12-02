@@ -1,10 +1,26 @@
 package contoller
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"oktools/src/model"
+	"time"
 )
+
+var begin = time.Now()
+
+func Uptime(c *gin.Context) {
+	now := time.Now()
+	c.String(http.StatusOK,
+		fmt.Sprintf("The system launched in %s. already running for %d days, %d hours, %d minues, %d seconds.",
+			begin.Format("2006-01-02 15:04:05"),
+			now.Day()-begin.Day(),
+			now.Hour()-begin.Hour(),
+			now.Minute()-begin.Minute(),
+			now.Second()-begin.Second()),
+	)
+}
 
 func Ping(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"msg": "pong"})
