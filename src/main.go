@@ -66,6 +66,7 @@ func main() {
 			_, _ = http.Get(fmt.Sprintf("https://sc.ftqq.com/%s.send?text=%s",
 				conf.Conf.ThirdParty.ServerChan.Key, url.QueryEscape("主人服务器又挂掉啦~")))
 		}
+		log.Println("Something terrible happened:", err)
 		panic(err)
 	}
 }
@@ -87,6 +88,7 @@ func runNoTLS() {
 
 		err := e.Run(":80")
 		if err != nil {
+			log.Println("Something terrible happened:", err)
 			panic(err)
 		}
 	}()
