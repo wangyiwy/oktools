@@ -8,18 +8,34 @@ import (
 	"time"
 )
 
-var begin = time.Now()
+const (
+	second = 1
+	minute = 60 * second
+	hour   = 60 * minute
+	day    = 24 * hour
+)
+
+var begin time.Time
+
+func init() {
+	begin = time.Now()
+}
 
 func Uptime(c *gin.Context) {
-	now := time.Now()
+	diff := time.Now().Unix() - begin.Unix()
+	days := diff / day
+	hours := (diff - days*day) / hour
+	minutes := (diff - days*day - hours*hour) / minute
+	second := (diff - minutes*minute - days*day - hours*hour) / second
+
 	c.String(http.StatusOK,
 		fmt.Sprintf("The system launched in %s. already running for %d days, %d hours, %d minues, %d seconds.",
 			begin.Format("2006-01-02 15:04:05"),
-			now.Day()-begin.Day(),
-			now.Hour()-begin.Hour(),
-			now.Minute()-begin.Minute(),
-			now.Second()-begin.Second()),
-	)
+			days,
+			hours,
+			minutes,
+			second,
+		))
 }
 
 func Ping(c *gin.Context) {
