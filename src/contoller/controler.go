@@ -26,7 +26,7 @@ func Uptime(c *gin.Context) {
 	days := diff / day
 	hours := (diff - days*day) / hour
 	minutes := (diff - days*day - hours*hour) / minute
-	second := (diff - minutes*minute - days*day - hours*hour) / second
+	seconds := (diff - minutes*minute - days*day - hours*hour) / second
 
 	c.String(http.StatusOK,
 		fmt.Sprintf("The system launched in %s. already running for %d days, %d hours, %d minues, %d seconds.",
@@ -34,7 +34,7 @@ func Uptime(c *gin.Context) {
 			days,
 			hours,
 			minutes,
-			second,
+			seconds,
 		))
 }
 
