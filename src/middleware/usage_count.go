@@ -28,5 +28,5 @@ func init() {
 }
 
 func UsageCount(c *gin.Context) {
-	channel <- c.Request.RequestURI
+	channel <- c.Request.URL.Path
 }
