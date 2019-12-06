@@ -27,23 +27,23 @@ func main() {
 			panic("Please set the log file path!")
 		}
 
-		f, err := os.OpenFile(logfile, os.O_RDWR|os.O_CREATE|os.O_APPEND, os.ModePerm)
+		file, err := os.OpenFile(logfile, os.O_RDWR|os.O_CREATE|os.O_APPEND, os.ModePerm)
 		if err != nil {
-			f, err = os.Create(logfile)
-			if f == nil {
+			file, err = os.Create(logfile)
+			if file == nil {
 				panic(err)
 			}
 		}
 
 		defer func() {
-			err := f.Close()
+			err := file.Close()
 			if err != nil {
 				panic(err)
 			}
 		}()
 
-		gin.DefaultWriter = f
-		log.SetOutput(f)
+		gin.DefaultWriter = file
+		log.SetOutput(file)
 	} else {
 		// Debug模式
 		go func() {
@@ -58,7 +58,7 @@ func main() {
 
 	var err error
 	if gin.Mode() == gin.ReleaseMode {
-		serverChan("Oktools server start")
+		serverChan("OkTools server start")
 
 		runNoTLS()
 		err = r.RunTLS(":"+conf.Conf.Http.Port, conf.Conf.Http.SSL.Crt, conf.Conf.Http.SSL.Key)
@@ -68,8 +68,9 @@ func main() {
 
 	if err != nil {
 		if gin.Mode() == gin.ReleaseMode {
-			serverChan("Oktools server shutdown")
+			serverChan("OkTools server shutdown")
 		}
+		log.Println("Something terrible happened:", err)
 		panic(err)
 	}
 }
