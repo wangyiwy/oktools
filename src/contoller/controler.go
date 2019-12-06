@@ -15,11 +15,7 @@ const (
 	day    = 24 * hour
 )
 
-var begin time.Time
-
-func init() {
-	begin = time.Now()
-}
+var begin = time.Now()
 
 func Uptime(c *gin.Context) {
 	diff := time.Now().Unix() - begin.Unix()
@@ -30,12 +26,8 @@ func Uptime(c *gin.Context) {
 
 	c.String(http.StatusOK,
 		fmt.Sprintf("The system launched in %s. already running for %d days, %d hours, %d minues, %d seconds.",
-			begin.Format("2006-01-02 15:04:05"),
-			days,
-			hours,
-			minutes,
-			seconds,
-		))
+			begin.Format("2006-01-02 15:04:05"), days, hours, minutes, seconds),
+	)
 }
 
 func Ping(c *gin.Context) {

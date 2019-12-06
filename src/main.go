@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/gin-gonic/gin"
+	"io/ioutil"
 	"log"
 	"net/http"
 	_ "net/http/pprof"
@@ -11,6 +12,7 @@ import (
 	"oktools/src/contoller"
 	"oktools/src/middleware"
 	"os"
+	"time"
 )
 
 func main() {
@@ -53,8 +55,11 @@ func main() {
 	}
 
 	r := initRouter()
+
 	var err error
 	if gin.Mode() == gin.ReleaseMode {
+		serverChan("Oktools server start")
+
 		runNoTLS()
 		err = r.RunTLS(":"+conf.Conf.Http.Port, conf.Conf.Http.SSL.Crt, conf.Conf.Http.SSL.Key)
 	} else {
@@ -63,11 +68,22 @@ func main() {
 
 	if err != nil {
 		if gin.Mode() == gin.ReleaseMode {
-			_, _ = http.Get(fmt.Sprintf("https://sc.ftqq.com/%s.send?text=%s",
-				conf.Conf.ThirdParty.ServerChan.Key, url.QueryEscape("主人服务器又挂掉啦~")))
+			serverChan("Oktools server shutdown")
 		}
-		log.Println("Something terrible happened:", err)
 		panic(err)
+	}
+}
+
+func serverChan(msg string) {
+	key := conf.Conf.ThirdParty.ServerChan.Key
+	msg += time.Now().Format(" - 2006-01-02 15:04:05")
+
+	resp, err := http.Get(fmt.Sprintf("https://sc.ftqq.com/%s.send?text=%s", key, url.QueryEscape(msg)))
+	if err == nil {
+		bytes, _ := ioutil.ReadAll(resp.Body)
+		log.Println("ServerChan resp:", string(bytes))
+	} else {
+		log.Println("ServerChan error:", err)
 	}
 }
 
