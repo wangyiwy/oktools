@@ -101,6 +101,6 @@ func UpdateUsageCount() {
 func init() {
 	_, err := loadTools()
 	if err != nil {
-		panic(err)
+		log.Fatalln(err)
 	}
 }

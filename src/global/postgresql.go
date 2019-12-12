@@ -3,7 +3,8 @@ package global
 import (
 	"database/sql"
 	"fmt"
-	_ "github.com/jinzhu/gorm/dialects/postgres"
+	_ "github.com/lib/pq"
+	"log"
 	"oktools/src/conf"
 )
 
@@ -17,6 +18,6 @@ func init() {
 		"host=%s port=%s user=%s password=%s dbname=%s sslmode=disable",
 		dbConf.Host, dbConf.Port, dbConf.Username, dbConf.Password, dbConf.DbName))
 	if err != nil {
-		panic(err)
+		log.Fatalln(err)
 	}
 }

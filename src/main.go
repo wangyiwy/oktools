@@ -24,21 +24,21 @@ func main() {
 
 		logfile := conf.Conf.App.LogFile
 		if logfile == "" {
-			panic("Please set the log file path!")
+			log.Fatalln("Please set the log file path!")
 		}
 
 		file, err := os.OpenFile(logfile, os.O_RDWR|os.O_CREATE|os.O_APPEND, os.ModePerm)
 		if err != nil {
 			file, err = os.Create(logfile)
 			if file == nil {
-				panic(err)
+				log.Fatalln(err)
 			}
 		}
 
 		defer func() {
 			err := file.Close()
 			if err != nil {
-				panic(err)
+				log.Fatalln(err)
 			}
 		}()
 
@@ -49,7 +49,7 @@ func main() {
 		go func() {
 			err := http.ListenAndServe(":6060", nil)
 			if err != nil {
-				panic(err)
+				log.Fatalln(err)
 			}
 		}()
 	}
@@ -70,8 +70,7 @@ func main() {
 		if gin.Mode() == gin.ReleaseMode {
 			serverChan("OkTools server stopped")
 		}
-		log.Println("Something terrible happened:", err)
-		panic(err)
+		log.Fatalln("Something terrible happened:", err)
 	}
 }
 
@@ -105,8 +104,7 @@ func runNoTLS() {
 
 		err := e.Run(":80")
 		if err != nil {
-			log.Println("Something terrible happened:", err)
-			panic(err)
+			log.Fatalln("Something terrible happened:", err)
 		}
 	}()
 }

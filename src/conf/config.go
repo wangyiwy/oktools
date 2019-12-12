@@ -3,6 +3,7 @@ package conf
 import (
 	"gopkg.in/yaml.v2"
 	"io/ioutil"
+	"log"
 	"os"
 )
 
@@ -49,11 +50,11 @@ func init() {
 
 	data, err := ioutil.ReadFile(conf)
 	if err != nil {
-		panic(err)
+		log.Fatalln(err)
 	}
 
 	err = yaml.UnmarshalStrict(data, &Conf)
 	if err != nil {
-		panic(err)
+		log.Fatalln(err)
 	}
 }
