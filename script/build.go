@@ -17,16 +17,16 @@ import (
 	"strings"
 )
 
-const buildDir = "build"
+const buildDir = "./build"
 const tempDir = buildDir + "/oktools"
 
-const srcTplDir = "tpl"
+const srcTplDir = "./tpl"
 const dstTplDir = tempDir + "/tpl/"
 
-const srcCSSDir = "static/css"
+const srcCSSDir = "./static/css"
 const dstCSSDir = tempDir + "/static/css/"
 
-const srcJSDir = "static/js"
+const srcJSDir = "./static/js"
 const dstJSDir = tempDir + "/static/js/"
 
 func main() {
@@ -49,7 +49,7 @@ func buildGo() {
 	err = os.Setenv("GOARCH", "amd64")
 	checkError(err)
 
-	cmd := exec.Command("go", "build", "-o", tempDir+"/oktools", "-i", "src")
+	cmd := exec.Command("go", "build", "-o", tempDir+"/oktools", "-i", "./src")
 	cmd.Stderr = os.Stderr
 	out, err := cmd.Output()
 	checkError(err)
@@ -68,9 +68,9 @@ func minifyStatic() {
 }
 
 func copyFiles() {
-	copyDir("sql", tempDir+"/sql")
-	copyFile("static/favicon.ico", tempDir+"/static/favicon.ico")
-	copyFile("conf.yaml", tempDir+"/conf.yaml")
+	copyDir("./sql", tempDir+"/sql")
+	copyFile("./static/favicon.ico", tempDir+"/static/favicon.ico")
+	copyFile("./conf.yaml", tempDir+"/conf.yaml")
 }
 
 func minifyFiles(m *minify.M, mimeType, src, dst string) {
