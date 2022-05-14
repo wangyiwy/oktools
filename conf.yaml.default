@@ -8,16 +8,3 @@ http:
     enable: false
     crt:
     key:
-
-database:
-  host: 127.0.0.1
-  port: 5432
-  username: 
-  password: 
-  dbname: 
-
-third-party:
-  amap:
-    key: 
-  serverchan:
-    key: 

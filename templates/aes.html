@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta charset="UTF-8">
+    <title>AES加密、AES解密 - 在线工具 - OKTools</title>
+    <meta name="keywords" content="AES加密,AES解密,AES算法">
+    <meta name="description" content="在线AES加密、解密工具,AES加密,AES解密,AES算法">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link href="/static/css/font-awesome/5.10.0-11/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css" type="text/css">
+</head>
+<body>
+{{template "aside"}}
+<main>
+    <div class="container">
+        <h1>AES加密/解密</h1>
+        <textarea id="area_text" class="textarea mt-2" rows="15" placeholder="明文"></textarea>
+        <div class="group fullwidth mt-2">
+            <span class="static">模式</span>
+            <select id="select_mode" class="select" onchange="encrypt()">
+                <option value="CBC">CBC</option>
+                <option value="ECB">ECB</option>
+                <option value="CFB">CFB</option>
+                <option value="CTR">CTR</option>
+                <option value="OFB">OFB</option>
+            </select>
+            <span class="static">填充</span>
+            <select id="select_pad" class="select" onchange="encrypt()">
+                <option value="Pkcs7">Pkcs7</option>
+                <option value="Iso97971">Iso97971</option>
+                <option value="AnsiX923">AnsiX923</option>
+                <option value="Iso10126">Iso10126</option>
+                <option value="ZeroPadding">ZeroPadding</option>
+                <option value="NoPadding">NoPadding</option>
+            </select>
+            <span class="static">偏移量</span>
+            <input id="input_iv" class="input" placeholder="ECB模式不需要">
+            <span class="static">密文编码</span>
+            <select id="select_output_encode" class="select" onchange="encrypt()">
+                <option value="Base64">Base64</option>
+                <option value="HEX">HEX</option>
+            </select>
+        </div>
+        <div class="group fullwidth mt1">
+            <span class="static">密钥</span>
+            <input id="input_key" class="input">
+            <button class="button" onclick="encrypt()">
+                <i class="fa fa-arrow-down"></i>
+                <span>加密</span>
+            </button>
+            <button class="button" onclick="decrypt()">
+                <i class="fa fa-arrow-up"></i>
+                <span>解密</span>
+            </button>
+            <button class="button" onclick="cleanup()">
+                <span>清空</span>
+            </button>
+        </div>
+        <textarea id="area_cipher_text" class="textarea mt-2" rows="15" placeholder="密文"></textarea>
+    </div>
+</main>
+<script src="/static/js/crypto-js/3.1.9-1/crypto-js.min.js"></script>
+<script src="/static/js/encrypt_aes.js"></script>
+</body>
+</html>

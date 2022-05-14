@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON格式化 - 在线工具 - OKTools</title>
+    <meta name="keywords" content="JSON,JSON解析,JSON格式化,JSON编辑">
+    <meta name="description" content="在线JSON格式化工具,JSON解析,JSON格式化,JSON编辑">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link href="/static/css/font-awesome/5.10.0-11/css/all.min.css" rel="stylesheet">
+    <link href="/static/css/jsoneditor/6.1.0/jsoneditor.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/static/css/style.css" type="text/css">
+    <style>
+        .container {
+            max-width: 100%;
+        }
+
+        .jsoneditor-poweredBy {
+            display: none;
+        }
+
+        div.jsoneditor-menu, .jsoneditor-modal .pico-modal-header {
+            background-color: #6c928c;
+        }
+
+        div.jsoneditor, div.jsoneditor-menu {
+            border: 1px solid #6c928c;
+        }
+    </style>
+</head>
+<body>
+{{template "aside"}}
+<main>
+    <div class="container">
+        <h1>JSON格式化</h1>
+        <div class="flex mt1">
+            <div id="json_editor" class="editarea" onpaste="setTimeout(toTree, 1)"></div>
+            <div class="mid-menus">
+                <div>
+                    <button class="button" onclick="toTree()">
+                        <i class="fa fa-arrow-right"></i>
+                    </button>
+                    <button class="button" onclick="toJson()">
+                        <i class="fa fa-arrow-left"></i>
+                    </button>
+                    <button class="button" onclick="cleanup()">清空</button>
+                </div>
+            </div>
+            <div id="tree_editor" class="editarea"></div>
+        </div>
+    </div>
+</main>
+<script src="/static/js/jsoneditor/6.1.0/jsoneditor.min.js"></script>
+<script>
+    const json_editor = new JSONEditor(document.getElementById("json_editor"), {mode: 'code'});
+    const tree_editor = new JSONEditor(document.getElementById("tree_editor"), null);
+    json_editor.setText(null);
+
+    function toTree() {
+        json_editor.format();
+        tree_editor.set(JSON.parse(json_editor.getText()));
+        tree_editor.expandAll();
+    }
+
+    function toJson() {
+        json_editor.setText(JSON.stringify(tree_editor.get(), null, 2))
+    }
+
+    function cleanup() {
+        json_editor.setText('');
+        tree_editor.set(undefined)
+    }
+</script>
+</body>
+</html>
