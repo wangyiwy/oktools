@@ -89,6 +89,7 @@ func initRouter() *gin.Engine {
 
 	r.SetHTMLTemplate(template.Must(template.New("").ParseFS(tmpl, "templates/*.html")))
 	r.Any("/static/*filepath", func(c *gin.Context) {
+		c.Header("Cache-Control", "max-age=3153600")
 		staticServer := http.FileServer(http.FS(assets))
 		staticServer.ServeHTTP(c.Writer, c.Request)
 	})
