@@ -6,7 +6,7 @@
     <meta name="keywords" content="PDF转图片、PDF转JPG">
     <meta name="description" content="在线PDF转JPG工具,使用pdf.js将PDF转为JPG图片">
     <link rel="shortcut icon" href="/favicon.ico">
-    <link href="/static/css/font-awesome/5.10.0-11/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.10.0-11/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/style.css" type="text/css">
 </head>
 <body>
@@ -57,9 +57,9 @@
         </div>
     </div>
 </main>
-<script src="/static/js/pdf.js/2.2.228/pdf.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/pdf.js/2.2.228/pdf.min.js"></script>
 <script>
-    pdfjsLib.GlobalWorkerOptions.workerSrc = '/static/js/pdf.js/2.2.228/pdf.worker.min.js';
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.bootcdn.net/ajax/libs/pdf.js/2.2.228/pdf.worker.min.js';
 
     const preview = document.getElementById('preview');
     const page_num = document.getElementById('page_num');

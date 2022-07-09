@@ -7,7 +7,7 @@
     <meta name="description" content="在线JSON转Golang Struct工具,JSON转Golang 结构体,JSON转Struct,JSON转Go">
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="/static/css/style.css" type="text/css">
-    <link href="/static/css/highlight.js/9.15.9/styles/idea.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.15.9/styles/idea.min.css" rel="stylesheet">
     <style>
         .container {
             max-width: 100%;
@@ -32,7 +32,7 @@
                 <div>
                     <button class="button primary" onclick="convert()">转换-展开</button>
                     <button class="button primary" onclick="convert(false)">转换-嵌套</button>
-                    <button class="button" data-clipboard-action="copy" data-clipboard-target="#output">复制</button>
+                    <button class="button cpy-btn" data-clipboard-action="copy" data-clipboard-target="#output">复制</button>
                     <button class="button" onclick="cleanup()">清空</button>
                 </div>
             </div>
@@ -43,10 +43,10 @@
         </div>
     </div>
 </main>
-<script src="/static/js/highlight.js/9.15.9/highlight.min.js"></script>
-<script src="/static/js/highlight.js/9.15.9/languages/json.min.js"></script>
-<script src="/static/js/highlight.js/9.15.9/languages/go.min.js"></script>
-<script src="/static/js/clipboard.js/2.0.4/clipboard.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.15.9/highlight.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.15.9/languages/json.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.15.9/languages/go.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
 <script src="/static/js/json2go.js"></script>
 </body>
 </html>

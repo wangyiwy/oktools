@@ -1,4 +1,4 @@
-importScripts('/static/js/crypto-js/3.1.9-1/crypto-js.min.js');
+importScripts('https://cdn.bootcdn.net/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js');
 
 let algo;
 

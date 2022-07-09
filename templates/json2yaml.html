@@ -7,8 +7,8 @@
     <meta name="description" content="在线JSON转YAML,YAML转JSON工具,JSON转YAML,YAML转JSON">
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="/static/css/style.css" type="text/css">
-    <link href="/static/css/highlight.js/9.15.9/styles/idea.min.css" rel="stylesheet">
-    <link href="/static/css/font-awesome/5.10.0-11/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.15.9/styles/idea.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.10.0-11/css/all.min.css" rel="stylesheet">
     <style>
         .container {
             max-width: 100%;
@@ -39,9 +39,9 @@
                         <i class="fa fa-arrow-left"></i>
                         <span>转JSON</span>
                     </button>
-                    <button class="button" data-clipboard-action="copy" data-clipboard-target="#area_json">复制JSON
+                    <button class="button cpy-btn" data-clipboard-action="copy" data-clipboard-target="#area_json">复制JSON
                     </button>
-                    <button class="button" data-clipboard-action="copy" data-clipboard-target="#area_yaml">复制YAML
+                    <button class="button cpy-btn" data-clipboard-action="copy" data-clipboard-target="#area_yaml">复制YAML
                     </button>
                     <button class="button" onclick="cleanup()">清空</button>
                 </div>
@@ -53,11 +53,11 @@
         </div>
     </div>
 </main>
-<script src="/static/js/highlight.js/9.15.9/highlight.min.js"></script>
-<script src="/static/js/highlight.js/9.15.9/languages/json.min.js"></script>
-<script src="/static/js/highlight.js/9.15.9/languages/yaml.min.js"></script>
-<script src="/static/js/clipboard.js/2.0.4/clipboard.min.js"></script>
-<script src="/static/js/js-yaml/3.13.1/js-yaml.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.15.9/highlight.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.15.9/languages/json.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.15.9/languages/yaml.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
 <script>
     let area_json = document.getElementById('area_json');
     let area_yaml = document.getElementById('area_yaml');
@@ -93,7 +93,7 @@
         area_yaml.innerHTML = '';
     }
 
-    new ClipboardJS('.button').on('success', function () {
+    new ClipboardJS('.cpy-btn').on('success', function () {
         alert('复制成功')
     }).on('error', function () {
         alert('复制失败,请手动复制')
