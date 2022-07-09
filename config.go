@@ -14,9 +14,8 @@ type App struct {
 type Http struct {
 	Port string `yaml:"port"`
 	SSL  struct {
-		Enable bool   `yaml:"enable"`
-		Crt    string `yaml:"crt"`
-		Key    string `yaml:"key"`
+		Crt string `yaml:"crt"`
+		Key string `yaml:"key"`
 	} `yaml:"ssl"`
 }
 
@@ -45,7 +44,7 @@ func init() {
 				LogFile: "oktools.log",
 			},
 			Http: Http{
-				Port: "8888",
+				Port: "80",
 			},
 		}
 	}

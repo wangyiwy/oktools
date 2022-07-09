@@ -80,7 +80,7 @@
     <a class="tool" href="/qrcode"><p>二维码制作</p>
         <p>https://oktools.net/qrcode</p>
     </a>
-    <a class="tool" href="http://oktools.net/websocket"><p>WebSocket测试</p>
+    <a class="tool" href="#" onclick="hrefForNoTLS('/websocket')"><p>WebSocket测试</p>
         <p>https://oktools.net/websocket</p>
     </a>
     <a class="tool" href="/regex"><p>正则表达式测试</p>
@@ -98,6 +98,9 @@
                 alert("请使用快捷键Ctrl+D添加到收藏");
             }
         }
+    }
+    function hrefForNoTLS(path) {
+        window.location.href = 'http://' + window.location.host + path;
     }
 </script>
 </body>
