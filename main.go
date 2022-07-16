@@ -2,6 +2,7 @@ package main
 
 import (
 	"embed"
+	"github.com/gin-contrib/gzip"
 	"github.com/gin-gonic/gin"
 	"html/template"
 	"log"
@@ -86,6 +87,8 @@ func runNoTLS() {
 
 func initRouter() *gin.Engine {
 	r := gin.Default()
+
+	r.Use(gzip.Gzip(gzip.DefaultCompression))
 
 	r.SetHTMLTemplate(template.Must(template.New("").ParseFS(tmpl, "templates/*.html")))
 	r.Any("/static/*filepath", func(c *gin.Context) {
