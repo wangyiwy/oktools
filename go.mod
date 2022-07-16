@@ -3,11 +3,8 @@ module oktools
 go 1.16
 
 require (
-	github.com/gin-gonic/gin v1.4.0
-	github.com/lib/pq v1.1.1
-	github.com/pkg/sftp v1.10.1 // indirect
-	github.com/tdewolff/minify v2.3.6+incompatible
-	github.com/tdewolff/minify/v2 v2.5.0
-	github.com/tdewolff/parse v2.3.4+incompatible // indirect
-	gopkg.in/yaml.v2 v2.2.2
+	github.com/gin-contrib/gzip v0.0.6
+	github.com/gin-gonic/gin v1.8.1
+	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
+	gopkg.in/yaml.v2 v2.4.0
 )

@@ -49,4 +49,20 @@
         window.location.href = 'http://' + window.location.host + path;
     }
 </script>
+<script>
+    var _hmt = _hmt || [];
+    let hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?e3d5bc397b23c3f6a8036739dae1557b";
+    let s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+
+    let tools = document.querySelectorAll('.side-nav li');
+    for (let i = 0; i < tools.length; i++) {
+        let node = tools[i];
+        if (node.querySelector('a').getAttribute('href').endsWith(document.location.pathname)) {
+            node.classList.add('active');
+            break
+        }
+    }
+</script>
 {{end}}
