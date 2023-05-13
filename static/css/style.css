@@ -236,6 +236,10 @@ footer {
     color: #ff3860 !important;
 }
 
+.text-accent {
+    color: var(--color-text);
+}
+
 .input, .textarea, input[type='checkbox'] {
     appearance: none;
     -moz-appearance: none;
